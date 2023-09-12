@@ -1,0 +1,35 @@
+html,body{
+    margin:0;
+    padding:0;
+}
+Main{
+    height:100vh;
+    display: flex;
+}
+.design{
+    width:55%;
+    background: rgb(9,9,121);
+    background: linear-gradient(129deg, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+.login-form{
+    padding: 10px 20px;
+    width:45%;
+}
+
+img{
+    width:200px;
+    margin:0 auto;
+    display: block;
+}
+
+@media(max-width:768px){
+    Main{
+        justify-content: center;
+    }
+    .login-form{
+        width:90%;
+    }
+    .design{
+       display: none;
+    }
+}

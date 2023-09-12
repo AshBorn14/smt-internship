@@ -1,0 +1,30 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand me-5" href="{% url 'home' %}"><img class="img-thumbnail logo" src="{% static 'logo.png' %}"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'startup_applications' %}"><i class="fa-solid fa-lightbulb"></i> Applications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa-solid fa-rocket"></i> Startup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa-solid fa-coins"></i> Funding</a>
+          </li>
+        </ul>
+        <h5 class="text-end">@{{ request.user }}</h5>
+        
+
+
+      </div>
+      
+    </div>
+  </nav>

@@ -1,0 +1,11 @@
+.logo{
+    width:150px;
+}
+.footer-container{
+    display: flex;
+}
+@media(max-width:768px){
+    /* .footer-container{
+        flex-direction: row;
+    } */
+}

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/appForm.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <header>
+            <h1 class="text-center text-primary-emphasis bg-primary-subtle py-4"><b>Track Application</b></h1>
+        </header>
+        <main>
+            {% if object_exist %}
+            <h1 class="text-center my-4">Application Record</h1>
+            <div class="card mx-auto application-track mb-4">
+                <div class="card-header py-3">
+                  <h5 class="text-center"><b>Application Id :</b> {{application.application_id}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item pb-3"><b>Startup Name:</b> {{application.startup_name}} </li>
+                  <li class="list-group-item pb-3"><b>Founder Name:</b> {{application.founder_name}} </li>
+                  <li class="list-group-item pb-3"><b>Contact number:</b> {{application.contact_number}} </li>
+                  <li class="list-group-item pb-3"><b>Email id: </b> {{application.email_id}} </li>
+                  <li class="list-group-item pb-3"><b>Submitted at:</b> {{application.created_at}} </li>
+                  {% if application.isAccepted %}
+                    <li class="list-group-item bg-success text-light fs-5 py-3"><b><i class="fa-regular fa-circle-check"></i> Congratulations Your application has been Accepted </b></li>
+                {% elif application.isRejected %}
+                    <li class="list-group-item bg-danger text-light fs-5 py-3"><b><i class="fa-regular fa-circle-xmark"></i> Sorry Your application has been Rejected</b></li>
+                {% else %}
+                <li class="list-group-item bg-secondary text-light fs-5 py-3"><b><i class="fa-regular fa-clock"></i> Your Application is still under review process</b></li>
+                {% endif %}
+                </ul>
+              </div>
+              <div class="application-track mx-auto mb-4">
+                <a href="{% url 'status' %}" class="btn btn-secondary fs-5 px-4 me-2">Back</a>
+                <a href="{% url 'apply' %}" class="btn btn-primary fs-5 px-4">OK</a>
+              </div>
+            {% else %}
+            {% comment %} <img src="{% static 'Incubation-Poster-1.png' %}" class="rounded w-50"/> {% endcomment %}
+            {% include 'messages.html' %}    
+            <form method="POST" action="" class="mx-auto bg-secondary-subtle my-4 rounded p-4 track-form">
+                    {% csrf_token %}
+                    <label for="applicationId" class="form-label fw-bold fs-4">Enter Your Application Id: </label>
+                    <input type="text" name="application_id" class="form-control" id="applicationId" aria-describedby="ApplicationId"  placeholder="e.g: abcd-gh12-jsdjv-23123" required/>
+                    <div id="ApplicationId" class="form-text">Please enter application id with "-"</div>
+                    <a href="{% url 'apply' %}" class="btn btn-secondary mt-4 me-2">Back</a>
+                    <button class="btn btn-primary mt-4">Track Application</button>
+                </form>
+            {% endif %}
+        </main>
+        
+
+
+
+        {% include 'footer.html' %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="" async defer></script>
+    </body>
+</html>
