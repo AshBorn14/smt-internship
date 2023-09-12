@@ -35,7 +35,7 @@
                 {% elif application.isRejected %}
                     <li class="list-group-item bg-danger text-light fs-5 py-3"><b><i class="fa-regular fa-circle-xmark"></i> Sorry Your application has been Rejected</b></li>
                 {% else %}
-                <li class="list-group-item bg-secondary text-light fs-5 py-3"><b><i class="fa-regular fa-clock"></i> Your Application is still under review process</b></li>
+                <li class="list-group-item bg-secondary text-light fs-5 py-3"><b><i class="fa-regular fa-clock"></i> Your Application is still under {{application.application_stage}} process</b></li>
                 {% endif %}
                 </ul>
               </div>

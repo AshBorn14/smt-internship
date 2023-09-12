@@ -18,6 +18,13 @@ STAGE_CHOICES = [
     ("Growth", "Growth")
 ]
 
+APPLICATION_STAGE_CHOICES = [
+    ("Submission", "Submission"),
+    ("Review", "Review"),
+    ("Verification", "Verification"),
+    ("Onboarding", "Onboarding")
+]
+
 class Application(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     application_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -44,5 +51,6 @@ class Application(models.Model):
     pitchdeck = models.FileField(upload_to="pitchdeck/", max_length=300, null=True, default=None, blank=True, help_text="<span class='form-text text-muted'><small>Please upload pdf file of size less than 200KB</small></span>")
     isAccepted = models.BooleanField(default=False)
     isRejected = models.BooleanField(default=False)
+    application_stage = models.CharField(max_length=80, choices=APPLICATION_STAGE_CHOICES, default="Submission" )
     infoVerified = models.BooleanField(default=True)
 
